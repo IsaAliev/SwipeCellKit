@@ -208,7 +208,7 @@ class SwipeController: NSObject {
             if visibleSwipeableRect.isNull == false {
                 let top = visibleSwipeableRect.minY > frame.minY ? max(0, visibleSwipeableRect.minY - frame.minY) : 0
                 let bottom = max(0, frame.size.height - visibleSwipeableRect.size.height - top)
-                contentEdgeInsets = UIEdgeInsets(top: top, left: 0, bottom: bottom, right: 0)
+                contentEdgeInsets = UIEdgeInsets(top: top, left: options.horizontalInsets.left, bottom: bottom, right: options.horizontalInsets.right)
             }
         }
         

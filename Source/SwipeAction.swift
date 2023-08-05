@@ -84,6 +84,11 @@ public class SwipeAction: NSObject {
     /// - note: When set to `true`, the actions menu is automatically hidden when the action is selected. The default value is `false`.
     public var hidesWhenSelected = false
     
+    public var shadowRadius: CGFloat = .zero
+    public var shadowColor: UIColor = .clear
+    public var shadowOpacity: CGFloat = .zero
+    public var shadowOffset: CGSize = .zero
+    
     /**
      Constructs a new `SwipeAction` instance.
 

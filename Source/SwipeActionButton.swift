@@ -59,6 +59,11 @@ class SwipeActionButton: UIButton {
         setTitleColor(highlightedTextColor, for: .highlighted)
         setImage(action.image, for: .normal)
         setImage(action.highlightedImage ?? action.image, for: .highlighted)
+        
+        layer.shadowOffset = action.shadowOffset
+        layer.shadowColor = action.shadowColor.cgColor
+        layer.shadowRadius = action.shadowRadius
+        layer.shadowOpacity = Float(action.shadowOpacity)
     }
     
     override var isHighlighted: Bool {
