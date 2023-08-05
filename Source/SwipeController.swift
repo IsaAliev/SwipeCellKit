@@ -219,6 +219,8 @@ class SwipeController: NSObject {
                                            orientation: orientation,
                                            actions: actions)
         actionsView.delegate = self
+        actionsView.clipsToBounds = false
+        actionsContainerView.clipsToBounds = false
         
         actionsContainerView.addSubview(actionsView)
         
