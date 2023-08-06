@@ -240,7 +240,7 @@ class SwipeController: NSObject {
         
         swipeable.state = .dragging
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        DispatchQueue.main.async {
             actionsView.clipsToBounds = false
             actionsContainerView.clipsToBounds = false
         }
