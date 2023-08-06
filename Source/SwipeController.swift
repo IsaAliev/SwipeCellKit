@@ -220,7 +220,7 @@ class SwipeController: NSObject {
                                            actions: actions)
         actionsView.delegate = self
         actionsView.clipsToBounds = true
-        actionsContainerView.clipsToBounds = true
+//        actionsContainerView.clipsToBounds = false
         
         actionsContainerView.addSubview(actionsView)
         
@@ -240,9 +240,8 @@ class SwipeController: NSObject {
         
         swipeable.state = .dragging
         
-        DispatchQueue.main.async {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             actionsView.clipsToBounds = false
-            actionsContainerView.clipsToBounds = false
         }
     }
     
