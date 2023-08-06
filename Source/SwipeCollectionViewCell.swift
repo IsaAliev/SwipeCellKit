@@ -221,7 +221,9 @@ extension SwipeCollectionViewCell: SwipeControllerDelegate {
     }
     
     func swipeController(_ controller: SwipeController, editActionsOptionsForSwipeableFor orientation: SwipeActionsOrientation) -> SwipeOptions {
-        guard let collectionView = collectionView, let indexPath = collectionView.indexPath(for: self) else { return SwipeOptions() }
+        guard let collectionView = collectionView, let indexPath = collectionView.indexPath(for: self) else {
+            return delegate?.collectionView(.init(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()), editActionsOptionsForItemAt: .init(row: .zero, section: .zero), for: orientation) ?? .init()
+        }
         
         return delegate?.collectionView(collectionView, editActionsOptionsForItemAt: indexPath, for: orientation) ?? SwipeOptions()
     }
