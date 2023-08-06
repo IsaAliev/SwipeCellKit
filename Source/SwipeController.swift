@@ -26,7 +26,7 @@ protocol SwipeControllerDelegate: class {
     
 }
 
-class SwipeController: NSObject {
+public class SwipeController: NSObject {
     
     weak var swipeable: (UIView & Swipeable)?
     weak var actionsContainerView: UIView?
@@ -175,7 +175,7 @@ class SwipeController: NSObject {
     }
     
     @discardableResult
-    func showActionsView(for orientation: SwipeActionsOrientation) -> Bool {
+    public func showActionsView(for orientation: SwipeActionsOrientation) -> Bool {
         guard let actions = delegate?.swipeController(self, editActionsForSwipeableFor: orientation), actions.count > 0 else { return false }
         guard let swipeable = self.swipeable else { return false }
         
@@ -188,7 +188,7 @@ class SwipeController: NSObject {
         return true
     }
     
-    func configureActionsView(with actions: [SwipeAction], for orientation: SwipeActionsOrientation) {
+    public func configureActionsView(with actions: [SwipeAction], for orientation: SwipeActionsOrientation) {
         guard var swipeable = self.swipeable,
             let actionsContainerView = self.actionsContainerView,
             let scrollView = self.scrollView else {
@@ -219,8 +219,8 @@ class SwipeController: NSObject {
                                            orientation: orientation,
                                            actions: actions)
         actionsView.delegate = self
-        actionsView.clipsToBounds = true
-        actionsContainerView.clipsToBounds = true
+        actionsView.clipsToBounds = false
+        actionsContainerView.clipsToBounds = false
         
         actionsContainerView.addSubview(actionsView)
         
