@@ -345,7 +345,7 @@ public class SwipeController: NSObject {
 }
 
 extension SwipeController: UIGestureRecognizerDelegate {
-    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         if gestureRecognizer == tapGestureRecognizer {
             if UIAccessibility.isVoiceOverRunning {
                 scrollView?.hideSwipeables()
