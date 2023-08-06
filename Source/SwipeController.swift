@@ -220,7 +220,7 @@ class SwipeController: NSObject {
                                            actions: actions)
         actionsView.delegate = self
         actionsView.clipsToBounds = true
-//        actionsContainerView.clipsToBounds = false
+        actionsContainerView.clipsToBounds = true
         
         actionsContainerView.addSubview(actionsView)
         
@@ -239,10 +239,6 @@ class SwipeController: NSObject {
         swipeable.actionsView = actionsView
         
         swipeable.state = .dragging
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            actionsView.clipsToBounds = false
-        }
     }
     
     func animate(duration: Double = 0.7, toOffset offset: CGFloat, withInitialVelocity velocity: CGFloat = 0, completion: ((Bool) -> Void)? = nil) {
