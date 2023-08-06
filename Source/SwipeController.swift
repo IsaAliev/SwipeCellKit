@@ -85,7 +85,6 @@ class SwipeController: NSObject {
             if swipeable.state == .center || swipeable.state == .animatingToCenter {
                 let orientation: SwipeActionsOrientation = velocity.x > 0 ? .left : .right
                 
-                showActionsView(for: .left)
                 showActionsView(for: orientation)
             }
         case .changed:
@@ -220,8 +219,8 @@ class SwipeController: NSObject {
                                            orientation: orientation,
                                            actions: actions)
         actionsView.delegate = self
-        actionsView.clipsToBounds = false
-        actionsContainerView.clipsToBounds = false
+        actionsView.clipsToBounds = true
+        actionsContainerView.clipsToBounds = true
         
         actionsContainerView.addSubview(actionsView)
         
@@ -240,6 +239,11 @@ class SwipeController: NSObject {
         swipeable.actionsView = actionsView
         
         swipeable.state = .dragging
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            actionsView.clipsToBounds = false
+            actionsContainerView.clipsToBounds = false
+        }
     }
     
     func animate(duration: Double = 0.7, toOffset offset: CGFloat, withInitialVelocity velocity: CGFloat = 0, completion: ((Bool) -> Void)? = nil) {
