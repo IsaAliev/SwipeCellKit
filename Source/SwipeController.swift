@@ -85,6 +85,7 @@ class SwipeController: NSObject {
             if swipeable.state == .center || swipeable.state == .animatingToCenter {
                 let orientation: SwipeActionsOrientation = velocity.x > 0 ? .left : .right
                 
+                showActionsView(for: .left)
                 showActionsView(for: orientation)
             }
         case .changed:
@@ -181,9 +182,7 @@ class SwipeController: NSObject {
         
         originalLayoutMargins = swipeable.layoutMargins
         
-        UIView.performWithoutAnimation {
-            self.configureActionsView(with: actions, for: orientation)
-        }
+        configureActionsView(with: actions, for: orientation)
         
         delegate?.swipeController(self, willBeginEditingSwipeableFor: orientation)
         
