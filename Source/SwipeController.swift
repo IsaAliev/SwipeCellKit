@@ -181,7 +181,9 @@ class SwipeController: NSObject {
         
         originalLayoutMargins = swipeable.layoutMargins
         
-        configureActionsView(with: actions, for: orientation)
+        UIView.performWithoutAnimation {
+            self.configureActionsView(with: actions, for: orientation)
+        }
         
         delegate?.swipeController(self, willBeginEditingSwipeableFor: orientation)
         
