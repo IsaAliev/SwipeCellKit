@@ -31,7 +31,7 @@ open class SwipeCollectionViewCell: UICollectionViewCell {
         return swipeController.panGestureRecognizer;
     }
     
-    var swipeController: SwipeController!
+    public var swipeController: SwipeController!
     var isPreviouslySelected = false
     
     weak var collectionView: UICollectionView?
