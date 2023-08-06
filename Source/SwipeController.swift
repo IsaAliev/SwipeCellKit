@@ -190,11 +190,12 @@ public class SwipeController: NSObject {
     
     public func configureActionsView(with actions: [SwipeAction], for orientation: SwipeActionsOrientation) {
         guard var swipeable = self.swipeable,
-            let actionsContainerView = self.actionsContainerView,
-            let scrollView = self.scrollView else {
+            let actionsContainerView = self.actionsContainerView else {
                 return
         }
 
+        let scrollView = self.scrollView ?? UIScrollView()
+        
         let options = delegate?.swipeController(self, editActionsOptionsForSwipeableFor: orientation) ?? SwipeOptions()
         
         swipeable.actionsView?.removeFromSuperview()
